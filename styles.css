@@ -1,0 +1,666 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Outfit:wght@100..900&display=swap");
+
+html,
+body {
+  height: 100%;
+  font-family: "Epilogue", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+
+header {
+  margin-bottom: 0.7rem;
+  padding: 0.5rem 1rem;
+}
+
+.nav {
+  z-index: 1000;
+  padding: 0.7rem;
+  padding-bottom: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  gap: 1rem;
+  margin: auto;
+}
+
+.logo {
+  margin: 0;
+  margin-top: 0.3rem;
+  cursor: pointer;
+}
+
+.menu-items {
+  padding: 0rem 0.4rem;
+  padding-bottom: 0;
+  display: block;
+  text-decoration: none;
+  color: black;
+  gap: 0;
+  margin-left: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 0.9rem;
+}
+
+.signup {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-right: 2rem;
+  font-weight: 300;
+}
+
+.register-btn {
+  padding: 0.625rem 1.4rem;
+  background-color: white;
+  border: solid;
+  border-width: 1.7px;
+  border-radius: 0.725rem;
+  margin-left: 5%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background-color: black;
+  color: white;
+  padding: 0.655rem 1.4rem;
+  transition: all 0.2s;
+}
+
+.register-btn:active {
+  background-color: white;
+  color: black;
+  padding: 0.58rem 1.3rem;
+  transition: all 0.2s;
+}
+
+.inner-span {
+  display: flex;
+  text-wrap: nowrap;
+}
+
+.arrow-up {
+  display: none;
+}
+
+.arrow-down {
+  display: inline-block;
+}
+
+.nav ul {
+  width: 100%;
+}
+
+/* Universal hidden class to toggle visibility */
+.hidden {
+  display: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 90px;
+  background: #fff;
+  box-shadow: rgba(42, 42, 44, 0.2) 0px 7px 40px 0px;
+  padding: 0.7rem 0.5rem;
+  border-radius: 0.7rem;
+  display: none;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+.dropdown-menu ul.modal li {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu ul.modal li svg {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.dropdown-menu.features-dropdown.active {
+  padding-left: 0.4rem;
+}
+
+.dropdown-menu.second.company-dropdown.active {
+  padding-left: 0.4rem;
+}
+
+.dropdown-item {
+  padding: 0.4rem 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item svg {
+  margin-right: 0.2rem;
+  align-items: middle;
+}
+
+.second {
+  left: 280px;
+  min-height: 7rem;
+  display: none;
+  align-items: center;
+  font-size: inherit;
+  padding: 0.7rem 0.4rem;
+}
+
+.second li {
+  margin-bottom: 0.2rem;
+  cursor: pointer;
+}
+
+.dropdown-elements {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+ul li {
+  list-style: none;
+  font-size: inherit;
+}
+
+/* Sidebar */
+
+.sidebar {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -70%; /* Hide the sidebar offscreen */
+  width: 70%;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.nav.mobile {
+  display: flex; /* or block if not using flexbox */
+  flex-direction: column;
+  width: 100%;
+  height: 100vw;
+  position: relative;
+}
+
+.sidebar.active .menu-items,
+.sidebar.active .signup {
+  display: flex; /* Show menu items and signup section in sidebar */
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start */
+  gap: 1rem; /* Add some gap between items */
+  margin-top: 2rem; /* Adjust spacing from the top */
+  height: auto;
+}
+
+
+.sidebar.active .signup {
+  margin: auto;
+}
+
+.sidebar .logo {
+  display: none;
+}
+
+.sidebar.active .menu-items a,
+.sidebar.active .signup a,
+.sidebar.active .signup button {
+  display: block;
+  text-align: left;
+  width: 100%;
+  font-size: clamp(1rem, 4vw, 1.4rem);
+}
+
+.sidebar.active .nav {
+  align-items: start;
+  justify-content: start;
+}
+.sidebar.active .inner-span {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar.active .menu-items {
+  width: 100%; /* Ensure it takes full width */
+  padding-left: 0.1rem; /* Add padding to adjust left alignment */
+  margin-left: 0; /* Remove any extra margin */
+  display: flex;
+  flex-direction: column; /* Ensure it is in column layout */
+  align-items: flex-start; /* Align items to the start (left) */
+}
+
+.sidebar.active .dropdown-menu {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+  border: none;
+  box-shadow: none;
+  width: 100vw;
+  height: auto;
+  justify-content: center;
+}
+
+.sidebar .menu .menu-items.inner {
+  position: relative;
+  display: flex;
+}
+
+.sidebar.active .close {
+  display: block; /* Show when sidebar is active */
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar .menu-items,
+.sidebar .signup {
+  display: flex; /* Hidden by default */
+  flex-direction: column;
+}
+
+.sidebar.active .signup {
+  display: flex;
+  margin: 2rem auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar.active .signup a,
+.sidebar.active .signup button {
+  text-align: center;
+}
+
+.sidebar.active .signup button {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.sidebar.active .menu-dropdown {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.sidebar .dropdown-item {
+  padding-left: 0;
+}
+
+.active .dropdown-item.hover {
+  background-color: #bebebe;
+}
+
+/* Hide the up arrows by default */
+.hidden {
+  display: none;
+}
+
+/* Show the up arrows when the corresponding dropdown is active */
+.sidebar.active .features-dropdown.active .features-arrow-up,
+.sidebar.active .mobile-features-dropdown.active .mobile-features-arrow-up,
+.sidebar.active .company-dropdown.active .company-arrow-up,
+.sidebar.active .mobile-company-dropdown.active .mobile-company-arrow-up {
+  display: inline;
+}
+
+/* Show the down arrows when the corresponding dropdown is inactive */
+.sidebar.active .features-dropdown:not(.active) .features-arrow-down,
+.sidebar.active
+  .mobile-features-dropdown:not(.active)
+  .mobile-features-arrow-down,
+.sidebar.active .company-dropdown:not(.active) .company-arrow-down,
+.sidebar.active
+  .mobile-company-dropdown:not(.active)
+  .mobile-company-arrow-down {
+  display: inline;
+}
+
+/* Hide the up arrows when the corresponding dropdown is inactive */
+.sidebar.active .features-dropdown:not(.active) .features-arrow-up,
+.sidebar.active
+  .mobile-features-dropdown:not(.active)
+  .mobile-features-arrow-up,
+.sidebar.active .company-dropdown:not(.active) .company-arrow-up,
+.sidebar.active .mobile-company-dropdown:not(.active) .mobile-company-arrow-up {
+  display: none;
+}
+
+/* Hide the down arrows when the corresponding dropdown is active */
+.sidebar.active .features-dropdown.active .features-arrow-down,
+.sidebar.active .mobile-features-dropdown.active .mobile-features-arrow-down,
+.sidebar.active .company-dropdown.active .company-arrow-down,
+.sidebar.active .mobile-company-dropdown.active .mobile-company-arrow-down {
+  display: none;
+}
+
+/* Dropdown menu styles */
+.sidebar.active .mobile-features-dropdown,
+.sidebar.active .mobile-company-dropdown {
+  display: none;
+  padding-left: 1.5rem;
+}
+
+.sidebar.active .menu-items.inner .dropdown .dropdown-menu.active {
+  display: block; /* Show the dropdown menu when active */
+}
+
+.hamburger {
+  display: none;
+  z-index: 1002;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  cursor: pointer;
+}
+
+.close {
+  display: none; /*Hiden by default*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 1002;
+}
+/* Initial hidden state of the overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Below the sidebar but above the rest of the content */
+  display: none; /* Hidden by default */
+}
+
+/* Show the overlay when the sidebar is active */
+.sidebar.active + .overlay {
+  display: block;
+}
+
+.sidebar a {
+  font-size: clamp(0.5rem 1.5rem 2rem); /* Adjust the font size as needed */
+}
+
+/* Main Content */
+
+.main-container {
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 550%;
+  font-weight: 700;
+  line-height: 5.3rem;
+}
+
+.make {
+  display: block;
+}
+
+.remote-work {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.main-content p {
+  font-size: 1.3rem;
+  height: 100%;
+  max-width: 40ch;
+  margin: 1.7rem 0;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 1.4;
+}
+
+.body {
+  margin-bottom: 0;
+  max-width: 900px;
+  max-height: 82%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  padding-left: 5rem;
+  padding-right: 0;
+}
+
+.learn-btn {
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+  background-color: black;
+  border-radius: 0.7rem;
+  border: none;
+  display: inline-block;
+  max-width: 10rem;
+  padding: 1.27rem 1.5rem;
+  cursor: pointer;
+}
+
+.learn-btn:active {
+  padding-top: 1rem;
+  max-width: 9.8rem;
+  color: black;
+  background-color: white;
+  border: solid;
+  transition: all 0.1s;
+}
+
+.middle-div {
+  padding: 6rem 6rem;
+}
+
+.img {
+  background-image: url(images/image-hero-desktop.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 5%;
+  margin-left: 2%;
+  padding: 10.5rem 15rem;
+  aspect-ratio: 3/4;
+}
+
+footer {
+  margin-top: 5rem;
+  display: flex;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 2rem;
+  width: 100%;
+}
+
+.attribution {
+  margin-top: auto;
+}
+
+@media (max-width: 875px) {
+  .sidebar .logo,
+  .menu-items,
+  .signup {
+    display: none;
+  }
+
+  /* Sidebar Arrow Styles */
+  .features-arrow-up,
+  .features-arrow-down,
+  .company-arrow-up,
+  .company-arrow-down {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+  }
+
+  .sidebar.active .hamburger {
+    display: none; /* Hide hamburger when sidebar is active */
+  }
+
+  .sidebar.active .close {
+    display: block; /* Show close when sidebar is active */
+  }
+
+  .body {
+    padding: 0 auto;
+    width: 100%;
+    height: 100vw;
+    padding: 1rem; /* Adjust padding for mobile */
+    width: 100%; /* Ensure the body takes the full width */
+    position: relative;
+  }
+
+  .img {
+    margin: 0;
+    padding: 0;
+    background-image: url(images/image-hero-mobile.png);
+    background-size: contain; /* Ensure the entire image is visible without distortion */
+    background-position: center; /* Center the background image within the container */
+    width: 100%; /* Set the width of the container to fill the entire viewport */
+    height: 80vw; /* Allow the height to adjust proportionally based on the width */
+  }
+
+  .main-content {
+    flex-direction: column-reverse;
+    padding: 0;
+    align-items: start;
+  }
+
+  .main-container {
+    width: 100%;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .middle-div {
+    display: none;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 10vw, 8rem); /* Responsive font size */
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    white-space: nowrap; /* Prevent text wrapping */
+    justify-content: center; /* Center the text */
+    padding: 0;
+    line-height: 1.2;
+  }
+
+  .make,
+  .remote-work {
+    display: inline-flex; /* Ensures on the same line */
+  }
+  .make {
+    margin-right: 0.5rem;
+  }
+
+  .remote-work {
+    margin-left: 0.5rem;
+    width: min-content; /*Erases white space*/
+  }
+
+  .main-content p {
+    text-align: center;
+    font-size: 1.5rem;
+    font-size: clamp(0.9rem, 4vw, 1.5rem);
+    margin: 0 auto;
+    width: 97%;
+    height: auto;
+  }
+
+  .learn-btn {
+    margin-top: 2rem;
+  }
+
+  .footer-logos {
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .footer-logos svg {
+    max-width: 100%; /* Example: Set a max width to prevent excessive growth */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .body {
+    align-items: center;
+    height: min-content;
+  }
+
+  .learn-btn {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .make {
+    margin-right: 0;
+  }
+
+  footer {
+    margin-bottom: 10%;
+  }
+}
