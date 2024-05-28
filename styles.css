@@ -25,7 +25,7 @@ header {
   padding: 0.5rem 1rem;
 }
 
-.nav {
+.navbar {
   z-index: 1000;
   padding: 0.7rem;
   padding-bottom: 0;
@@ -112,7 +112,7 @@ a {
   display: inline-block;
 }
 
-.nav ul {
+.navbar ul {
   width: 100%;
 }
 
@@ -210,7 +210,7 @@ ul li {
   overflow-y: auto;
 }
 
-.nav.mobile {
+.navbar.mobile {
   display: flex; /* or block if not using flexbox */
   flex-direction: column;
   width: 100%;
@@ -246,7 +246,7 @@ ul li {
   font-size: clamp(1rem, 4vw, 1.4rem);
 }
 
-.sidebar.active .nav {
+.sidebar.active .navbar {
   align-items: start;
   justify-content: start;
 }
@@ -438,7 +438,8 @@ ul li {
 }
 
 h1 {
-  font-size: 550%;
+  /* font-size: 550%; */
+  font-size: clamp(4rem, 5rem, 4.5rem);
   font-weight: 700;
   line-height: 5.3rem;
 }
