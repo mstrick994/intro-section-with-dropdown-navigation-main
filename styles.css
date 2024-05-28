@@ -453,6 +453,7 @@ h1 {
   display: flex;
   flex-direction: row;
   width: 100%;
+  white-space: nowrap;
 }
 
 .main-content p {
